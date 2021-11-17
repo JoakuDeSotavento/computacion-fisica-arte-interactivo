@@ -1,4 +1,4 @@
-/*******************************************************************************
+/***************************
 
  Bare Conductive projection mapping sletch for Pi Cap and MadMapper
  -------------------------------------------------------------------------------
@@ -34,13 +34,14 @@ picap_madmapper.pde - sketch to communicate between Pi Cap and MadMaper
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*******************************************************************************/
+***************************/
 
 import oscP5.*;
 import netP5.*;
 
 OscP5 oscP5;
 NetAddress madMapper;
+NetAddress touchDesigner, touchDesigner2;
 int value = 0;
 
 //aqui cambiar el numero dependiendo cuantos videos tengas
@@ -62,6 +63,9 @@ void setup() {
   // setup OSC receiver on port 3000
   oscP5 = new OscP5(this, 3000);
   madMapper = new NetAddress("127.0.0.1", 8010);
+  touchDesigner = new NetAddress("192.168.43.249", 7000);
+  touchDesigner2 = new NetAddress("127.0.0.1", 6000);
+
   
   status            = new int[numElectrodes];
   lastStatus        = new int[numElectrodes];
@@ -106,5 +110,8 @@ void sendMMMessage(boolean begin, int electrode) {
   
   // send it to MadMapper
   oscP5.send(msg, madMapper);
+  oscP5.send(msg, touchDesigner);
+  oscP5.send(msg, touchDesigner2);
+  
   println(msg);
 }

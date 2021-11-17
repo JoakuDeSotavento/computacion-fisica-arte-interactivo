@@ -27,7 +27,7 @@ Esta es una selección de los mejores libros para estos menesteres
 **Ana Rodríguez**
 aka **Polvo Eres**
 
-![@polvo_eres](./img/joaquin.jpg)
+![@polvo_eres](./img/ana.jpg)
 
 Ana Rodríguez es Licenciada en Artes Visuales por parte de la Universidad Michoacana de San Nicolas de Hidalgo (Morelia, México, 2018).Este año concluyo el Máter de Investigación en Prácticas Artísticas y Visuales por parte de la Universidad de castilla la Mancha.
 En 2019 curso el Programa Orientado a Prácticas Subalternas en Matadero, Madrid. Su trabajo está enfocado en temas como el poscolonialismo, el ecofeminismo y la tecnología.

@@ -1,31 +1,31 @@
 /***************************
-
+ 
  Bare Conductive projection mapping sletch for Pi Cap and MadMapper
  -------------------------------------------------------------------------------
-
-picap_madmapper.pde - sketch to communicate between Pi Cap and MadMaper
-
+ 
+ picap_madmapper.pde - sketch to communicate between Pi Cap and MadMaper
+ 
  Requires Processing 3.0+
-
+ 
  Requires osc5 (version 0.9.8+) to be in your processing libraries folder:
  http://www.sojamo.de/libraries/oscP5/
-
+ 
  Bare Conductive code written by Pascal Loose.
-
+ 
  This work is licensed under a MIT license https://opensource.org/licenses/MIT
-
+ 
  Copyright (c) 2017, Bare Conductive
-
+ 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
-
+ 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
+ 
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -33,8 +33,8 @@ picap_madmapper.pde - sketch to communicate between Pi Cap and MadMaper
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
-
-***************************/
+ 
+ ***************************/
 
 import oscP5.*;
 import netP5.*;
@@ -59,17 +59,24 @@ void updateArrayOSC(int[] array, Object[] data) {
   }
 }
 
+int time;
+int timeDelay;
+
 void setup() {
   // setup OSC receiver on port 3000
+
+  time = millis();
+  timeDelay = 1000*3; 
+
   oscP5 = new OscP5(this, 3000);
   madMapper = new NetAddress("127.0.0.1", 8010);
   touchDesigner = new NetAddress("192.168.43.249", 7000);
   touchDesigner2 = new NetAddress("127.0.0.1", 6000);
 
-  
+
   status            = new int[numElectrodes];
   lastStatus        = new int[numElectrodes];
-  
+
   // aqui agregar las animaciones
   mediasList[0] = "R1_1.mp4";
   mediasList[1] = "R2.mp4";
@@ -80,38 +87,59 @@ void setup() {
   mediasList[6] = "R8.mp4";
   mediasList[7] = "R9.mp4";
   mediasList[8] = "R10.mp4";
- 
 }
 
 void oscEvent(OscMessage oscMessage) {
-    if (oscMessage.checkAddrPattern("/touch")) {
-      updateArrayOSC(status, oscMessage.arguments());
+  if (oscMessage.checkAddrPattern("/touch")) {
+    updateArrayOSC(status, oscMessage.arguments());
+  }
+
+  for (int i = 0; i < numElectrodes; i++) {
+    if (lastStatus[i] == 0 && status[i] == 1) {
+      // touched
+      println("Electrode " + i + " was touched");
+      lastStatus[i] = 1;
+      sendMMMessage(true, i);
+    } else if (lastStatus[i] == 1 && status[i] == 0) {
+      // released
+      println("Electrode " + i + " was released");
+      lastStatus[i] = 0;
+      sendMMMessage(false, i);
     }
-    
-    for (int i = 0; i < numElectrodes; i++) {
-      if (lastStatus[i] == 0 && status[i] == 1) {
-        // touched
-        println("Electrode " + i + " was touched");
-        lastStatus[i] = 1;
-        sendMMMessage(true, i);
-      } 
-      else if(lastStatus[i] == 1 && status[i] == 0) {
-        // released
-        println("Electrode " + i + " was released");
-        lastStatus[i] = 0;
-        sendMMMessage(false, i);
-      }
+  }
+}
+
+void draw() {
+
+  if (millis() > time + timeDelay) {
+    println("do something " + millis());
+    for (int i = 0; i < 9; i++) {
+
+      sendMMMessage(randBoolean(), i);
     }
+    time = millis();
+  }
+}
+
+boolean randBoolean() {
+
+  int x = int(random(0,  2));
+  println(x);
+  if (x == 1) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 void sendMMMessage(boolean begin, int electrode) {
   OscMessage msg = new OscMessage("/medias/" + mediasList[electrode] + "/restart");
   msg.add(begin);
-  
+
   // send it to MadMapper
   oscP5.send(msg, madMapper);
   oscP5.send(msg, touchDesigner);
   oscP5.send(msg, touchDesigner2);
-  
+
   println(msg);
 }

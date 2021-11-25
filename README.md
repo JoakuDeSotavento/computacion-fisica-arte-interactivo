@@ -6,7 +6,7 @@ En este repositorio se encontrarán los materiales del taller: INTRODUCCIÓN A L
 
 ## Slides
 
-Aquí encontraras la [presentación del workshop](https://docs.google.com/presentation/d/1WIzgV2hw33gVqTYQRZylk09ymGXBEr7W_pJ6FJ2H2L4/edit?usp=sharing)
+Aquí encontraras la [presentación del workshop](https://docs.google.com/presentation/d/1Ly4eoGEeqiBYMibP8VgbU4bCvPUX1-qZQs6pPOvgtGo/edit?usp=sharing)
 
 ## Materiales del concurso
 

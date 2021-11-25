@@ -10,9 +10,11 @@ Aquí encontraras la [presentación del workshop](https://docs.google.com/presen
 
 ## Temario
 
-<https://github.com/JoakuDeSotavento/computacion-fisica-arte-interactivo/blob/main/introductiontotouchdesigner.pdf>
+<https://github.com/JoakuDeSotavento/computacion-fisica-arte-interactivo/blob/main/Introducci%C3%B3n%20a%20la%20computaci%C3%B3n%20f%C3%ADsica%20y%20el%20arte%20interactivo%20con%20Bare%20Conductive%20%2B%20Raspberry%20%2B%20Touchdesigner%20(1).pdf>
 
 ## Libros
+
+<https://github.com/JoakuDeSotavento/computacion-fisica-arte-interactivo/blob/main/introductiontotouchdesigner.pdf>
 
 Esta es una selección de los mejores libros para estos menesteres
 

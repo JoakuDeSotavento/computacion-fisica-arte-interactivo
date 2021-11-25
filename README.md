@@ -8,9 +8,9 @@ En este repositorio se encontrarán los materiales del taller: INTRODUCCIÓN A L
 
 Aquí encontraras la [presentación del workshop](https://docs.google.com/presentation/d/1Ly4eoGEeqiBYMibP8VgbU4bCvPUX1-qZQs6pPOvgtGo/edit?usp=sharing)
 
-## Materiales del concurso
+## Temario
 
-<https://github.com/JoakuDeSotavento/computacion-fisica-arte-interactivo>
+<https://github.com/JoakuDeSotavento/computacion-fisica-arte-interactivo/blob/main/introductiontotouchdesigner.pdf>
 
 ## Libros
 

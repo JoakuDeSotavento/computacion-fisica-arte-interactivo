@@ -10,17 +10,13 @@ Aquí encontraras la [presentación del workshop](https://docs.google.com/presen
 
 ## Materiales del concurso
 
-<https://github.com/JoakuDeSotavento/AI-to-people>
+<https://github.com/JoakuDeSotavento/computacion-fisica-arte-interactivo>
 
 ## Libros
 
 Esta es una selección de los mejores libros para estos menesteres
 
 -------- drive.google.com/file/d/1EdUHApmi8gDPhFTLEqCSNj-p55fkkJvF/view?usp=sharing -------------
-
-## Ejemplos
-
-<https://openprocessing.org/user/278519?view=activity>
 
 ## Autore
 

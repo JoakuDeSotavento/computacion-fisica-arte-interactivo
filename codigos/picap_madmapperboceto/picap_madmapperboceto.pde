@@ -42,6 +42,7 @@ import netP5.*;
 OscP5 oscP5;
 NetAddress madMapper;
 NetAddress touchDesigner, touchDesigner2;
+NetAddress resolume;
 int value = 0;
 
 //aqui cambiar el numero dependiendo cuantos videos tengas
@@ -72,6 +73,7 @@ void setup() {
   madMapper = new NetAddress("127.0.0.1", 8010);
   touchDesigner = new NetAddress("192.168.43.249", 7000);
   touchDesigner2 = new NetAddress("127.0.0.1", 6000);
+  resolume = new NetAddress("127.0.0.1", 3000);
 
 
   status            = new int[numElectrodes];
@@ -135,11 +137,16 @@ boolean randBoolean() {
 void sendMMMessage(boolean begin, int electrode) {
   OscMessage msg = new OscMessage("/medias/" + mediasList[electrode] + "/restart");
   msg.add(begin);
+  
+  OscMessage msg2 = new OscMessage("/composition/layers/" + electrode + "/clips/1/connect" + lastStatus[electrode]);
 
   // send it to MadMapper
   oscP5.send(msg, madMapper);
-  oscP5.send(msg, touchDesigner);
-  oscP5.send(msg, touchDesigner2);
+  oscP5.send(msg2, touchDesigner);
+  oscP5.send(msg2, resolume);
+  
+  
+  //oscP5.send(msg, touchDesigner2);
 
   println(msg);
 }

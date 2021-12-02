@@ -125,7 +125,7 @@ void draw() {
 
 boolean randBoolean() {
 
-  int x = int(random(0,  2));
+  int x = int(random(0, 2));
   println(x);
   if (x == 1) {
     return true;
@@ -137,15 +137,15 @@ boolean randBoolean() {
 void sendMMMessage(boolean begin, int electrode) {
   OscMessage msg = new OscMessage("/medias/" + mediasList[electrode] + "/restart");
   msg.add(begin);
-  
-  OscMessage msg2 = new OscMessage("/composition/layers/" + electrode + "/clips/1/connect" + lastStatus[electrode]);
 
+  OscMessage msg2 = new OscMessage("/composition/layers/" + electrode + "/clips/1/connect");
+  msg2.add(int(lastStatus[electrode]));
   // send it to MadMapper
   oscP5.send(msg, madMapper);
   oscP5.send(msg2, touchDesigner);
   oscP5.send(msg2, resolume);
-  
-  
+
+
   //oscP5.send(msg, touchDesigner2);
 
   println(msg);

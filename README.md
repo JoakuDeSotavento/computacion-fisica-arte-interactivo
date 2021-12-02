@@ -20,7 +20,13 @@ Esta es una selección de los mejores libros para estos menesteres
 
 -------- drive.google.com/file/d/1EdUHApmi8gDPhFTLEqCSNj-p55fkkJvF/view?usp=sharing -------------
 
-## Autore
+## Configuración de sistemas
+
+### Arduino
+
+Link a [Bare conductive para configurar Arduino](https://www.bareconductive.com/blogs/resources/how-to-program-your-touch-board-with-the-arduino-ide)
+
+## Autoras
 
 **Ana Rodríguez**
 aka **Polvo Eres**
